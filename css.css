@@ -1,0 +1,464 @@
+/* the body element...dont think anything overly important is done with it except its use as a container for major div elements */
+body{
+  height: 500px;
+  border: 1px solid green;
+  width: 200px;
+  overflow: hidden;
+
+  font-family: "Arial", sans-serif;
+}
+
+/* add a custom cursor to the game */
+html, body, div, a{
+  cursor: url(./images/cursor_2.png), auto;
+}
+
+/* the div on which the main map tile divs are placed on */
+#map{
+  width: 100%;
+  overflow: auto;
+  height: 100%;
+  padding-right: 15px;
+}
+
+/* the menu that appears as the main game title menu from where you can choose to play/setup a game, change options, etc. */
+div.title_menu{
+  position: absolute; background: radial-gradient(#012,#000); color: #00AAFF; left:0%; top:0%; width:100%; height:100%; z-index:1000;
+}
+
+div.title_menu_content{
+  position: relative; left:0%; top:0%; width:100%; height:100%; z-index:1001;
+}
+
+/* the options for the in-game main menu that contains sub menus like hotkeys, save/load game, quit, etc. */
+table.title_menu_options{
+  position:relative;
+  left:40%;
+  top:40%;
+
+  width:20%;
+  background:#038;
+
+  text-transform:uppercase;
+  text-align:center;
+  color:#FFF;
+
+  border:1px #FFF;
+  border-bottom-style: solid;
+
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+}
+
+/* not sure if this used anywhere */
+div.tile{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #00AA00;
+  border: 1px solid #FF0000;
+  z-index: 2;
+}
+
+/* the div that contains player 1's borders...may need to be generalized */
+div.player_border_1{
+  position:absolute;
+  height:100;
+  width:100;
+  left:0%;
+  top:0%;
+  background-image:url('./images/player_1_border_all.png');
+  z-index:6;
+}
+
+/* the div that contains the fog of war tile */
+div.tile_fog_of_war{
+  position:absolute;
+  height:100;
+  width:100;
+  /*background-image:url('./images/tile_fog_of_war.png');*/
+  background:#000;
+  z-index:202;
+}
+
+div.tile_fog_of_war_mini_map{
+  position:absolute;
+  background:#000;
+  z-index:5001;
+}
+
+/* used in generate_unit_div() on which the unit image and functionality is placed */
+div.unit_tile{
+  position:absolute;
+  height:100;
+  width:100;
+  left:0%;
+  top:0%;
+  z-index:200;
+}
+
+/* the hp bar for a unit ... found with the unit_tile styling in generate_unit_div() */
+div.unit_hp_bar{
+  position: absolute;
+  width: 100;
+  height: 10;
+  border: 3px solid #AAA;
+  z-index: 201;
+}
+
+/* div that goes behind the unit_tile div ... used to visually identify that a unit is currently selected */
+div.unit_selector{
+  position:absolute;
+  height:100;
+  width:100;
+  left:0%;
+  top:0%;
+  background-image:url('./images/unit_selector_3.png');
+  z-index:5;
+}
+
+/* div that goes on top of the unit_tile div ... used to indicate that that enemy has been attacked */
+div.attack_selector{
+  position:absolute;
+  height:100;
+  width:100;
+  left:0%;
+  top:0%;
+  background-image:url('./images/attack_selector_2.png');
+  z-index:502;
+}
+
+/* div that goes on top of the unit_tile div ... used to indicate that that enemy has been attacked */
+div.move_selector{
+  position:absolute;
+  height:100;
+  width:100;
+  left:-100;
+  top:-100;
+  background-image:url('./images/move_selector.png');
+  background-color: #000;
+  z-index:5050;
+}
+
+/* terrain div for ice */
+div.ice{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image:url('./images/terrain/ice_2.png');
+  background-color: #00AA00;
+  border: 0px solid #FFFFFF;
+  z-index: 2;
+}
+
+div.land{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image:url('./images/terrain/grassland.gif');
+  background-color: #00AA00;
+  border: 0px solid #FFFFFF;
+  z-index: 2;
+}
+
+div.grassland_hills{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image:url('./images/terrain/grassland_hills_2.png');
+  background-color: #00AA00;
+  border: 0px solid #FFFFFF;
+  z-index: 2;
+}
+
+div.desert{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image:url('./images/terrain/desert_2.png');
+  background-color: #00AA00;
+  border: 0px solid #FFFFFF;
+  z-index: 2;
+}
+
+div.desert_hills{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image:url('./images/terrain/desert_hills_2.png');
+  background-color: #00AA00;
+  border: 0px solid #FFFFFF;
+  z-index: 2;
+}
+
+div.water{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  /*background-image:url('./images/terrain/ocean.gif');*/
+  background-image:url('./images/terrain/ocean_2.png');
+  background-color: #0000AA;
+  border: 0px solid #FFFFFF;
+  z-index: 2;
+}
+
+div.water_all{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image:url('./images/terrain/ocean_2_border_grassland_all.png');
+  background-color: #0000AA;
+  border: 0px solid #FFFFFF;
+  z-index: 2;
+}
+
+div.water_side_one{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image:url('./images/terrain/ocean_2_border_grassland_top.png');
+  background-color: #0000AA;
+  border: 0px solid #FFFFFF;
+  z-index: 2;
+}
+
+div.water_side_one_1{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image:url('./images/terrain/ocean_2_border_grassland_top_and_side.png');
+  background-color: #0000AA;
+  border: 0px solid #FFFFFF;
+  z-index: 2;
+}
+
+div.water_side_two{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image:url('./images/terrain/ocean_2_border_desert_top.png');
+  background-color: #0000AA;
+  border: 0px solid #FFFFFF;
+  z-index: 2;
+}
+
+div.mountain{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image:url('./images/terrain/mountain_4.png');
+  background-color: #0000AA;
+  border: 0px solid #FFFFFF;
+  z-index: 2;
+}
+
+/* research menu div */
+div.res_menu_1{
+  overflow-x: auto;
+}
+
+/*  */
+div.tech{
+  position:fixed;
+  height:50;
+  width:0;
+  left:20.2%;
+  top:25%;
+  background-color: #CCAA00;
+  color: #0000FF;
+  z-index:1001;
+}
+
+/*  */
+div.tech_2{
+  position:absolute;
+  width:200;
+  text-align:center;
+  color:#FFF;
+  border:2px solid #FFF;
+}
+
+/* this is the title bar that goes over windows found during gameplay */
+table.sub_menu_title_bar{
+  /*position:fixed;*/
+  width:100%; text-align:center; color:#FFF; background:linear-gradient(#008, #004); border: 1px #FFF; border-bottom-style: solid;
+}
+
+/* this covers the actual lettering in the sub_menu_title_bar table */
+b.sub_menu_title_bar_title{
+  /*position:inherit;*/
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color: #FFD800;
+}
+
+/* this covers the option to return to the game (exits out of the sub_menu windows that appear during gameplay) */
+div.sub_menu_title_bar_return{
+  position:absolute; right:0.5%; top:0.5%;
+}
+
+/* for hotkeys found during game play such as in Attack or Build City */
+a.in-game_hotkey, span.in-game_hotkey{
+  color:#0AF; text-decoration: underline;
+}
+
+/* not sure if required */
+table.hotkeys_menu_child_window_1{
+  position:relative;
+  color:#FFF; left:0.5%;top:1.5%;
+}
+
+/* not sure if required */
+tr.hotkeys_menu_child_window_2{
+  position:relative;
+}
+
+/* for hotkeys found inside of the hotkey menu window in the menu options */
+td.hotkey_menu_hotkey{
+  text-align: center; border:1px solid #555; background:#111;
+}
+
+/* */
+td.hotkey_menu_blank{
+  text-align: center;
+}
+
+/* for the descriptions found next to the hotkey_menu_hotkey */
+td.hotkey_menu_description{
+  border: 1px #555;
+  border-bottom-style: solid;
+}
+
+/* */
+div.game_menu_1{
+  position: fixed; background: radial-gradient(#012,#000); color: #00AAFF; left:40%; top:30%; width:0%; height:30%; z-index:5000;
+}
+
+/*  */
+div.city_menu{
+  position: fixed; background: radial-gradient(#012,#000); color: #00AAFF; left:0%; top:10%; width:0%; height:70%; z-index:1000; overflow-y:auto;
+}
+
+/* found inside of the city_menu() div ... used to visualize items that can be built in that city */
+table.city_menu_build_item{
+  position:relative;
+  width:100%;
+  color:#FFF;
+
+  border:1px #FFF;
+  border-bottom-style: solid;
+
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+}
+
+/* found inside of the city_menu() div ... used to visualize the item that can be built in that city ... appears within the city_menu_build_item table */
+td.city_menu_build_item_image{
+  background: url(./images/units/warrior_2.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width:10%;
+}
+
+/* found inside of the city_menu() div ... used to display the text for an item that can be built in that city ... appears within the city_menu_build_item table */
+td.city_menu_build_item_title{
+  background:#038;
+  text-transform:uppercase;
+}
+
+/* the options for the in-game main menu that contains sub menus like hotkeys, save/load game, quit, etc. */
+table.main_menu_options{
+  position:relative;
+  left:0%;
+
+  width:100%;
+  background:#038;
+
+  text-transform:uppercase;
+  text-align:center;
+  color:#FFF;
+
+  border:1px #FFF;
+  border-bottom-style: solid;
+
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+}
+
+/* used to visually identify which main menu option the mouse is currently hovered over for the main_menu_options table as above */
+#main_menu_options:hover{
+  background:#26B;
+}
+
+/*  */
+td.city_menu_build_item{
+  border:0px solid #0F0;
+}
+
+/*  */
+img.city_menu_build_item{
+  float:left;
+  width:10%;
+  border:1px solid #f00;
+}
+
+/*  */
+a.policies_menu_links_1:link{
+  color:#0AF;
+}
+
+/*  */
+a.policies_menu_links_2:link{
+  color:#FA0;
+  font-weight: bold;
+}
+
+/* Causes the city menu's options to change color when the user hovers over them */
+#city_menu_build_item:hover{
+  background:#025;
+}
+
+/*  */
+a:link{color:#FFFFFF; text-decoration: none;}
+a:visited{color:#FFFFFF; text-decoration: none;}
+a:active{color:#FFFFFF; text-decoration: none;}
+a:hover{color:#FFFF00; text-decoration: none;}
+
+a:link.ET{
+  color:#00FF00;
+  text-decoration: none;
+}
+a:visited.ET{
+  color:#00FF00;
+  text-decoration: none;
+}
+a:active.ET{
+  color:#00FF00;
+  text-decoration: none;
+}
+a:hover.ET{
+  color:#FFFF00;
+  text-decoration: none;
+}
+
+/* resource tile: gold */
+div.resource_tile{
+  position:absolute;
+  height:100;
+  width:100;
+  z-index:10;
+}
+
+table.economy_menu_child_window_1{
+  position:relative;
+  height:100%;
+  width:100%;
+  left:0%;
+  top:0%;
+  color:#FFF;
+}
+
+tr.economy_menu_child_window_2{
+  position:relative;
+}
