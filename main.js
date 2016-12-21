@@ -239,6 +239,7 @@ function end_turn(value){ // value = which player's turn to end
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // THIS RUNS BEFORE tile_select()
 function unit_select(value){
+  play_sound("./sound/what.mp3");
   // check if another unit has already been selected before this one has
   if (another_unit_is_selected === 1){ // so this only seems to activate when touching your own units...thus a major problem
     another_unit_is_selected = 0;
