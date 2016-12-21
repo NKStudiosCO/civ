@@ -205,6 +205,7 @@ function end_turn(value){ // value = which player's turn to end
 
   // resets all unit movement points
   function update_units_move(value){
+    play_sound("./sound/hello.mp3");
     for(var i = 0, length = civ_units[p_color].length; i < length; i++){
       if (civ_units[p_color][i].unit_Type === "City"){
         civ_units[p_color][i].unit_Movement_Remaining = 0;
