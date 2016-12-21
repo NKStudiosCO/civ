@@ -288,20 +288,20 @@ function unit_select(value){
           civ_units[get_enemy_id][get_enemy_unit_num].unit_Health -= civ_units[p_color][unit_that_is_attacking[2]].unit_Strength;
 
           // apply bonus damage based on unit classes
-          if (civ_units[p_color][unit_that_is_attacking[2]].unit_Class === "rock"){
-            if (civ_units[get_enemy_id][get_enemy_unit_num].unit_Class === "scissors"){
+          if (civ_units[p_color][unit_that_is_attacking[2]].unit_Class === "Elite"){
+            if (civ_units[get_enemy_id][get_enemy_unit_num].unit_Class === "Common"){
               civ_units[get_enemy_id][get_enemy_unit_num].unit_Health -= civ_units[p_color][unit_that_is_attacking[2]].unit_Bonus_Damage;
             }
           }
 
-          if (civ_units[p_color][unit_that_is_attacking[2]].unit_Class === "scissors"){
-            if (civ_units[get_enemy_id][get_enemy_unit_num].unit_Class === "paper"){
+          if (civ_units[p_color][unit_that_is_attacking[2]].unit_Class === "Common"){
+            if (civ_units[get_enemy_id][get_enemy_unit_num].unit_Class === "Medic"){
               civ_units[get_enemy_id][get_enemy_unit_num].unit_Health -= civ_units[p_color][unit_that_is_attacking[2]].unit_Bonus_Damage;
             }
           }
 
-          if (civ_units[p_color][unit_that_is_attacking[2]].unit_Class === "paper"){
-            if (civ_units[get_enemy_id][get_enemy_unit_num].unit_Class === "rock"){
+          if (civ_units[p_color][unit_that_is_attacking[2]].unit_Class === "Medic"){
+            if (civ_units[get_enemy_id][get_enemy_unit_num].unit_Class === "Elite"){
               civ_units[get_enemy_id][get_enemy_unit_num].unit_Health -= civ_units[p_color][unit_that_is_attacking[2]].unit_Bonus_Damage;
             }
           }
