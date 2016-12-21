@@ -8,7 +8,7 @@ function create_unit(value_civ, value_unit){
   //
   // result3 = result3 / 100;
   // result4 = result4 / 100;
-
+play_sound("./sound/lay.mp3");
   x = selected_tile_x;
   y = selected_tile_y;
 
