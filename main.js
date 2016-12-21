@@ -101,6 +101,7 @@ function calculate_gold(value){
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function end_turn(value){ // value = which player's turn to end
   // PLAYER 1'S TURN
+ play_sound("./sound/zone.mp3");
   if (value === 0){
     check_civ_resources();
     calculate_gold();
