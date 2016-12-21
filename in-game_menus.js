@@ -89,10 +89,31 @@ function update_top_menu(){
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function info_menu(){
+  menu_return();
+  is_a_menu_open = 1;
 
+  // TITLE BAR
+  var menu_title_bar = [sub_menu_title_bar[0],"INFO",sub_menu_title_bar[1]].join("");
+
+  document.getElementById('hotkeys_menu').style.left = "20%";
+
+  document.getElementById('game_menu_2').style.width = "100%"
+  document.getElementById('hotkeys_menu').style.width = "60%"
+  document.getElementById('info_menu').innerHTML = "\
+  "+ menu_title_bar +"\
+  <table class='hotkeys_menu_child_window_1'>\
+  <tr class='hotkeys_menu_child_window_2'>\
+  <td class='hotkey_menu_hotkey'>Victory</td><td class='hotkey_menu_description'>destroy civ</td>\
+  
+  </tr>\
+  </table>"
+  document.getElementById('info_menu').style.border = "1px solid #FFFFFF"
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 function hotkeys_menu(){
   menu_return();
   is_a_menu_open = 1;
