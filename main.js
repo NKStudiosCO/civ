@@ -306,7 +306,7 @@ function unit_select(value){
             }
           }
 
-          play_sound(values_units.units[1].sound_attack);
+          play_sound("./sound/layzone.mp3");
 
           // modify unit hp bar according to the percentage of health left ... NEED TO GENERALIZE THIS (values_units.units[1].health is specific to a single unit)
           document.getElementById("unit_" + get_enemy_id + "_" + get_enemy_unit_num + "_hp_bar").style.width = (civ_units[get_enemy_id][get_enemy_unit_num].unit_Health / values_units.units[1].health) * 100;
