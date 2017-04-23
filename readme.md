@@ -5,4 +5,5 @@ The game is currently in pre-alpha, version 50.
 Firefox is currently the only supported browser.
 
 Check out my GitHub projects page for screenshots and more information:
-http://rrod.github.io
+http://nkstudiosco.github.io/civ/
+
